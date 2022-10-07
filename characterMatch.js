@@ -1,4 +1,5 @@
-exports.isCharacterMatch = function(string1, string2) {
+//exports.isCharacterMatch = function (string1, string2) {
+function isCharacterMatch(string1, string2) {
     
     // Convert both strings to lower case and remove all spacing and converted string2 to an array
     let str1LowerCase = string1.toLowerCase().replace(/\s/g, '');
@@ -22,19 +23,25 @@ exports.isCharacterMatch = function(string1, string2) {
     }
 };
 
-exports.anagramsFor = function(word, listOfWords) {
-    
+//isCharacterMatch = exports.isCharacterMatch;
+
+//exports.anagramsFor = function(word, listOfWords) {
+function anagramsFor(word, listOfWords) {    
     //Create test variable which calls characterMatch module
-    var test = require("./characterMatch");
+    //var test = require("./characterMatch");
     let anagramList = [];
     let wordLower = word.toLowerCase();
     
     //Calls characterMatch for each string in listOfWords
     for (w of listOfWords) {
-        if (test.isCharacterMatch(word, w) === true) {
+        if (isCharacterMatch(word, w) === true) {
             anagramList.push(w);
         } 
     }
     return anagramList
 };
 
+module.exports = {
+    isCharacterMatch, 
+    anagramsFor
+}
